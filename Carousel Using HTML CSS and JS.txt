@@ -1,0 +1,104 @@
+<div class="carousel">
+    <style>
+        body {
+font-family: Arial, sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+background-color: #f0f0f0;
+}
+.carousel {
+width: 80%;
+max-width: 600px;
+overflow: hidden;
+position: relative;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+background-color: white;
+}
+.carousel-track {
+display: flex;
+transition: transform 0.4s ease-in-out;
+}
+.carousel-slide {
+display: flex;
+justify-content: space-between;
+min-width: 100%;
+box-sizing: border-box;
+padding: 10px;
+}
+.box {
+width: 30%;
+height: 100px;
+background-color: #007BFF;
+color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 8px;
+font-size: 18px;
+text-align: center;
+}
+.carousel-buttons {
+position: absolute;
+top: 40%;
+width: 100%;
+display: flex;
+justify-content: space-between;
+}
+.carousel-buttons button {
+background-color: rgba(0, 0, 0, 0.5);
+border: none;
+color: white;
+width: 30px;
+height: 30px;
+border-radius: 50%;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+.carousel-buttons button:hover {
+background-color: rgba(0, 0, 0, 0.8);
+}
+    </style>
+<div class="carousel-track">
+<div class="carousel-slide">
+<div class="box">Box 1</div>
+<div class="box">Box 2</div>
+<div class="box">Box 3</div>
+</div>
+<div class="carousel-slide">
+<div class="box">Box 4</div>
+<div class="box">Box 5</div>
+<div class="box">Box 6</div>
+</div>
+<div class="carousel-slide">
+<div class="box">Box 7</div>
+<div class="box">Box 8</div>
+<div class="box">Box 9</div>
+</div>
+</div>
+<div class="carousel-buttons">
+<button id="prev"><</button>
+<button id="next">></button>
+</div>
+<script>
+    const track = document.querySelector('.carousel-track');
+const slides = Array.from(track.children);
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
+let currentIndex = 0;
+function updateCarousel() {
+track.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+prevButton.addEventListener('click', () => {
+currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
+updateCarousel();
+});
+nextButton.addEventListener('click', () => {
+currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+updateCarousel();
+});
+</script>
+</div>
